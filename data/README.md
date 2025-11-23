@@ -36,7 +36,7 @@ Decision Tree
 Naïve Bayes
 K-Nearest Neighbours (KNN)
 
-These models are used to predict a target variable such as injury type, injury group, or industry, depending on the final formulation.
+  These models are used to predict a target variable such as injury type, injury group, or industry, depending on the final formulation.
 
 4. Evaluation
 Performance assessed using accuracy, confusion matrices, and related metrics.
