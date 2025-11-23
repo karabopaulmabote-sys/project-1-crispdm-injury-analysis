@@ -34,11 +34,17 @@ Summarise findings, export visuals, and provide a clean notebook for reproducibi
 ## Repository Structure
 project-1-crispdm-injury-analysis/
 │
+
 ├ data/ # dataset & metadata
+
 ├ notebooks/ # Google Colab notebook
+
 ├ scripts/ # helper python scripts (cleaning, EDA, visuals)
+
 ├ visuals/ # exported plots
+
 ├ docs/ # summaries and CRISP-DM notes
+
 └ README.md # project overview
 
 
