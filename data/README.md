@@ -1,84 +1,77 @@
-Dataset: Workplace Injury and Illness Claims
+# Dataset: Workplace Accident Records
 
-File: nz-injury-statistics-work-related-claims-2018-csv.csv
+**File:** `accidents.csv`  
+**Source:** Publicly available dataset containing structured workplace incident reports.  
+**Format:** CSV
 
-Source: Public dataset originally downloaded from Kaggle.
+## Description
+The dataset contains individual incident records reported across different industries and provinces. Each row represents a single incident with details such as:
 
-Format: CSV, multi-year panel data.
+- Title of accident  
+- Date  
+- Province and city  
+- Industry and sub-industry  
+- Company name and ownership type  
+- Accident type  
+- Number of deaths  
+- Number of injuries  
+- Number of individuals punished  
+- Financial penalties  
 
-Description
+These attributes offer a structured view of workplace incidents, making the dataset suitable for exploratory analysis and supervised learning.
 
-The dataset contains annual counts of workplace injury and illness claims grouped by multiple demographic and industry attributes. Each row represents a combination of:
+## Use in Project
+This dataset is used for **Incident Severity Classification**, following the CRISP-DM framework. It supports the following tasks:
 
-Year
+### 1. Data Understanding  
+- Inspect structure, categories, and missingness  
+- Explore incident types, industries, and locations  
+- Understand injury and fatality patterns  
 
-Sex
+### 2. Data Preparation  
+- Clean categorical fields  
+- Standardise labels  
+- Parse injury and fatality ranges  
+- Engineer the severity target variable
 
-Age group
+### 3. Modelling  
+Machine learning classifiers used include:  
+- Decision Tree  
+- Naïve Bayes  
+- K-Nearest Neighbours (KNN)
 
-Geographic region
+### 4. Evaluation  
+Models are assessed using accuracy, confusion matrices, and interpretability.
 
-Employment status
+## Target Variable: Three-Class Severity
+Severity is engineered into **three distinct classes** using fatalities and injuries:
 
-Occupation
+### **Class 0 — Low Severity**  
+- No deaths  
+- 0–1 injuries  
+- Minor impact, limited harm
 
-Injury/Illness group
+### **Class 1 — Moderate Severity**  
+- No deaths  
+- 2–9 injuries  
+- Noticeable harm, multiple affected individuals
 
-Type of injury/disease
+### **Class 2 — High Severity**  
+- At least one death  
+- OR  
+- 10+ injuries  
+- Significant impact involving fatalities or high casualty counts
 
-Industry
+## Pre-processing Notes
+Before modelling, the dataset is cleaned and prepared through:
 
-Industry subgroup
+- Handling missing or ambiguous values  
+- Normalising industry, province, and ownership labels  
+- Converting injury and fatality ranges into numerical or ordinal values  
+- Constructing the three-class severity target  
+- Selecting feature columns for training  
 
-Value (claim count)
+All processing steps are documented inside the notebook.
 
-Measure
-
-Status
-
-Use in Project
-
-This dataset is used in Project 1 – CRISP-DM Data Science Lifecycle for the following tasks:
-
-1. Data Understanding:
-Exploration of categories, distributions, missingness, and relationships.
-
-2. Data Preparation:
-Cleaning, renaming, grouping, encoding, and fixing categorical structure.
-
-3. Modelling (Simple Supervised Learning):
-To align with the MEng coursework, a small modelling component is included:
-
-Decision Tree
-
-Naïve Bayes
-
-K-Nearest Neighbours (KNN)
-
-These models are used to predict a target variable such as injury type, injury group, or industry, depending on the final formulation.
-
-4. Evaluation:
-Performance assessed using accuracy, confusion matrices, and related metrics.
-
-5. Insights:
-Simple, interpretable explanations that connect back to the cleaned data.
-
-Pre-processing
-
-The dataset undergoes several preparation steps before modelling, including:
-
-Standardising text labels
-
-Removing empty categories
-
-Encoding categorical features
-
-Filtering out “Total” rows where needed
-
-Validating the numerical field (Value)
-
-These steps are documented inside the notebook.
-
-Licensing
-
-The dataset is used strictly for educational, academic, and non-commercial analysis under the terms of its original open data source.
+## Licensing
+This dataset is used strictly for educational, academic, and non-commercial analysis.
