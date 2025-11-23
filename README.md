@@ -1,50 +1,95 @@
-# Incident Severity Classification with CRISP-DM and Machine Learning
-This project applies the full Data Science Lifecycle using the CRISP-DM framework. The dataset contains detailed records of workplace incidents across industries, provinces, and company types, including the number of injuries and fatalities associated with each incident. The goal is to classify incident severity using simple machine learning models and a structured workflow.
+# Incident Severity Classification Using CRISP-DM
 
-## Objectives
-- Understand the structure and behaviour of the incident dataset  
-- Clean and prepare the data for analysis  
-- Create a clear severity target variable  
-- Explore patterns across industries, incident types, ownership groups, and locations  
-- Train simple machine learning models (Decision Tree, Naïve Bayes, KNN)  
-- Evaluate model performance using standard metrics  
-- Interpret the results in a practical and understandable way  
+This project forms part of my MEng coursework and demonstrates the complete Data Science Lifecycle using the CRISP-DM framework. The goal was to classify workplace accident severity into three levels based on incident type, industry, and the recorded injuries and fatalities. The project uses publicly available occupational accident data and focuses on applying a structured, end-to-end workflow rather than building highly optimised models.
 
-## CRISP-DM Workflow
-**1. Business Understanding**  
-Frame the problem and identify incident characteristics that relate to severity.
+## 1. Business Understanding
 
-**2. Data Understanding**  
-Inspect the structure, categories, distributions, and missingness in the dataset.
+Incident investigations often produce unstructured information that is difficult to analyse consistently. This project aimed to turn incident characteristics into structured features and model incident severity as a three-class problem:
 
-**3. Data Preparation**  
-Standardise fields, organise categorical variables, remove inconsistencies, and engineer the severity target.
+- **Low severity:** no injuries and no fatalities  
+- **Moderate severity:** injuries but no fatalities  
+- **High severity:** incidents involving fatalities or multiple injuries  
 
-**4. Modelling**  
-Train and compare simple models:
+The project explores whether simple machine learning models can classify incidents using only a small set of features.
+
+## 2. Data Understanding
+
+The dataset includes:
+
+- Incident title and description  
+- Province  
+- Industry  
+- Incident type  
+- Number of injuries (categorical ranges)  
+- Number of deaths (categorical ranges)  
+- Financial penalties and enforcement outcomes  
+
+Initial inspection showed several categorical fields, a small number of missing values, and injury/fatality fields encoded as ranges.
+
+## 3. Data Preparation
+
+Key preparation steps:
+
+- Dropped unused fields (`city`, `sub industry`, `company name`, `company ownership`)  
+- Removed rows with missing incident type  
+- Converted injury and fatality ranges to ordinal values  
+- Engineered a three-class severity label based on the injury and fatality structure  
+- One-hot encoded all categorical fields for modelling  
+
+This created a clean, usable dataset containing both categorical and ordinal variables.
+
+## 4. Exploratory Data Analysis (EDA)
+
+The EDA focused on:
+
+- Severity distribution  
+- Incident types and industries with the highest counts  
+- Relationships between injuries, fatalities, and severity  
+- Correlations between engineered features  
+
+**Key insights:**
+
+- Severity is driven mainly by fatalities and, to a lesser extent, injury counts.  
+- Construction, mining, and industrial sectors show higher concentrations of severe incidents.  
+- Certain incident types (fires, structural failures, mechanical accidents, transport accidents) appear frequently across all severity levels.  
+- The engineered severity classes are well-separated in the data.
+
+## 5. Modelling
+
+Three baseline classifiers were trained:
+
 - Decision Tree  
-- Naïve Bayes  
-- K-Nearest Neighbours (KNN)
+- Naïve Bayes (Multinomial)  
+- K-Nearest Neighbours (k=5)
 
-**5. Evaluation**  
-Assess accuracy, confusion matrices, and practical interpretability.
+All models used a shared preprocessing pipeline with One-Hot Encoding.
 
-**6. Deployment / Insights**  
-Summarise findings, export visuals, and provide a clean notebook for reproducibility.
+### Performance Summary
+
+| Model | Accuracy |
+| **Decision Tree** | **1.00** |
+| Naïve Bayes | 0.893 |
+| KNN (k=5) | 0.857 |
+
+The Decision Tree achieved perfect accuracy on the test set, reflecting the clear, rule-based structure of the engineered severity classes and the strong signal carried by injury and fatality counts. Naïve Bayes and KNN performed well overall but struggled more with the moderate severity class, which is the smallest and most variable group.
+
+## 6. Conclusions
+
+Working through the CRISP-DM phases provided a structured way to approach the project. The preparation work showed how important it is to turn real-world fields into meaningful numerical representations. The EDA confirmed expected patterns in safety-related data, and the modelling process demonstrated that simple classifiers can perform effectively when the features are well-defined.
+"""
 
 ## Repository Structure
 project-1-crispdm-injury-analysis/
 │
 
-├ data/ # dataset & metadata
-
-├ notebooks/ # Google Colab notebook
-
-├ scripts/ # helper python scripts (cleaning, EDA, visuals)
-
-├ visuals/ # exported plots
-
-├ docs/ # summaries and CRISP-DM notes
+├ data/ 
+   ├ accidents.csv
+   └ README.md
+│
+├ notebooks/ 
+   └ incident_severity.ipynb
+│
+├ requirements.txt
 
 └ README.md # project overview
 
