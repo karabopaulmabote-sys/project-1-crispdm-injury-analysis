@@ -1,6 +1,6 @@
 Dataset: Workplace Injury and Illness Claims
 
-File: injury_claims.csv
+File: nz-injury-statistics-work-related-claims-2018-csv.csv
 
 Source: Public dataset originally downloaded from Kaggle.
 
