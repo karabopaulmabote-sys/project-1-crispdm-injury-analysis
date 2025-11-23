@@ -1,23 +1,24 @@
-# Workplace Injury Analytics Using the CRISP-DM Lifecycle
-This project applies the full Data Science Lifecycle to a workplace injury and illness dataset, following the CRISP-DM framework. The dataset contains claim counts grouped by year, sex, age group, region, employment status, occupation, industry, and injury type. The project forms part of my MEng coursework and focuses on a clear, structured walkthrough of the data science process.
+# Incident Severity Classification with CRISP-DM and Machine Learning
+This project applies the full Data Science Lifecycle using the CRISP-DM framework. The dataset contains detailed records of workplace incidents across industries, provinces, and company types, including the number of injuries and fatalities associated with each incident. The goal is to classify incident severity using simple machine learning models and a structured workflow.
 
 ## Objectives
-- Understand the structure and behaviour of the dataset  
-- Clean, prepare, and organise the data for analysis  
-- Explore injury patterns through descriptive analytics  
-- Build simple machine learning models (Decision Tree, Naïve Bayes, KNN)  
+- Understand the structure and behaviour of the incident dataset  
+- Clean and prepare the data for analysis  
+- Create a clear severity target variable  
+- Explore patterns across industries, incident types, ownership groups, and locations  
+- Train simple machine learning models (Decision Tree, Naïve Bayes, KNN)  
 - Evaluate model performance using standard metrics  
-- Present insights that are easy to interpret and grounded in the data  
+- Interpret the results in a practical and understandable way  
 
 ## CRISP-DM Workflow
 **1. Business Understanding**  
-Define the purpose of analysing workplace injury data and identify the questions worth answering.
+Frame the problem and identify incident characteristics that relate to severity.
 
 **2. Data Understanding**  
-Load the dataset, inspect its structure, categories, missing values, and distributions.
+Inspect the structure, categories, distributions, and missingness in the dataset.
 
 **3. Data Preparation**  
-Standardise categories, remove non-informative “Total” rows, encode variables, and prepare numerical fields.
+Standardise fields, organise categorical variables, remove inconsistencies, and engineer the severity target.
 
 **4. Modelling**  
 Train and compare simple models:
